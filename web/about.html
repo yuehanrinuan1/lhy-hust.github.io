@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我的信息</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            width: 100vw;
+            height: 100vh;
+            background: url('../image/bg1.jpg') no-repeat;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Microsoft YaHei', sans-serif;
+            overflow: hidden;
+        }
+
+        nav {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .box {
+            flex: 1;
+            width: 90%;
+            margin: 20px auto;
+            background: linear-gradient(135deg,
+                rgba(87, 194, 255, 0.5) 0%,
+                rgba(247, 112, 184, 0.5) 50%,
+                rgba(140, 114, 236, 0.5) 100%);
+            background-size: 200% 200%;
+            animation: shine 3s infinite linear;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 15px rgb(255, 255, 255);
+            display: flex;
+            align-items: center;
+        }
+
+        @keyframes shine {
+            0% {
+                background-position: 0% 0%;
+            }
+            50% {
+                background-position: 100% 100%;
+            }
+            100% {
+                background-position: 0% 0%;
+            }
+        }
+
+        .container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            padding: 0 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .content-section {
+            width: 48%;
+            background: rgba(255, 255, 255, 0.2);
+            height: 85%;
+            border-radius: 20px;
+            box-sizing: border-box;
+            padding: 30px;
+            box-shadow: inset 0 0 15px rgb(255, 255, 255);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .section-title {
+            color: #fff;
+            font-size: 24px;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            font-weight: bold;
+            text-align: center;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 10px;
+        }
+
+        .section-content {
+            flex: 1;
+            overflow-y: auto;
+            padding-right: 10px;
+            color: white;
+        }
+
+        .section-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .section-content::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+        }
+        
+        .section-content::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 3px;
+        }
+
+        .content-item {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .content-item:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px);
+        }
+
+        .content-item h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+        }
+
+        .content-item h3 i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        .content-item p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .skill-bar {
+            height: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+
+        .skill-level {
+            height: 100%;
+            background: linear-gradient(90deg, #4dc6ff, #ff67b8);
+            border-radius: 5px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -33px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #4dc6ff;
+        }
+
+        .timeline-date {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 5px;
+        }
+
+        .timeline-content {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .hobby-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .hobby-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .hobby-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 18px;
+        }
+
+        .hobby-text {
+            flex: 1;
+        }
+
+        .hobby-text h4 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .hobby-text p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                padding: 20px;
+            }
+            
+            .content-section {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <div class="logo">关于我</div>
+        <ul class="nav-links">
+            <li><a href="../index.html"><i class="fas fa-home"></i> 首页</a></li>
+            <li><a href="about.html" class="active"><i class="fas fa-user"></i> 关于我</a></li>
+            <li><a href="photo.html"><i class="fas fa-camera"></i> 随手摄</a></li>
+            <li><a href="zatan.html"><i class="fas fa-blog"></i> 杂谈</a></li>
+            <li><a href="thanks.html"><i class="fas fa-envelope"></i> 联系我&&鸣谢</a></li>
+        </ul>
+    </nav>
+
+    <!-- 主内容区域 -->
+    <div class="box">
+        <div class="container">
+            <!-- 左侧内容区域 -->
+            <div class="content-section">
+                <div class="section-title">个人经历</div>
+                <div class="section-content">
+                    <div class="content-item">
+                        <h3><i class="fas fa-graduation-cap"></i> <b>教育经历</h3></b>
+                        <p style="color :rgba(0, 0, 0, 0.63)" "><b>2025-2029（预计）   本科    华中科技大学计算机科学与技术学院</p></b>
+                    </div>
+                    
+                    <div class="content-item">
+                        <h3><i class="fas fa-briefcase"></i> 科研经历</h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-date">#</div>
+                                <div class="timeline-content">#</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-date">#</div>
+                                <div class="timeline-content">#</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-date">#</div>
+                                <div class="timeline-content">#</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="content-item">
+                        <h3><i class="fas fa-trophy"></i> 成就与荣誉</h3>
+                        <p>#</p>
+                        <p>#</p>
+                        <p>#</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 右侧内容区域 -->
+            <div class="content-section">
+                <div class="section-title">个人能力</div>
+                <div class="section-content">
+                    <div class="content-item">
+                        <h3><i class="fas fa-code"></i> 专业技能</h3>
+                        <p>精通C语言</p>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 95%"></div>
+                        </div>
+                        
+                        <p>#</p>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 90%"></div>
+                        </div>
+                        
+                        <p>#</p>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 80%"></div>
+                        </div>
+                        
+                        <p>U#</p>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="content-item">
+                        <h3><i class="fas fa-heart"></i> 兴趣爱好</h3>
+                        <div class="hobby-item">
+                            <div class="hobby-icon">
+                                <i class="fas fa-music"></i>
+                            </div>
+                            <div class="hobby-text">
+                                <h4>音乐</h4>
+                                <p>吹笛，弹吉他</p>
+                            </div>
+                        </div>
+                        
+                        <div class="hobby-item">
+                            <div class="hobby-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="hobby-text">
+                                <h4>#</h4>
+                                <p>#</p>
+                            </div>
+                        </div>
+                        
+                        <div class="hobby-item">
+                            <div class="hobby-icon">
+                                <i class="fas fa-hiking"></i>
+                            </div>
+                            <div class="hobby-text">
+                                <h4>运动</h4>
+                                <p>传统武术，乒乓球，篮球，足球</p>
+                            </div>
+                        </div>
+                        
+                        <div class="hobby-item">
+                            <div class="hobby-icon">
+                                <i class="fas fa-music"></i>
+                            </div>
+                            <div class="hobby-text">
+                                <h4>#</h4>
+                                <p>#</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script>
+        window.onload = function() {
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // 如果不是当前页面，允许跳转
+                    if (!this.classList.contains('active')) {
+                        return; // 允许默认行为 - 跳转到链接
+                    }
+                    
+                    e.preventDefault();
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 200);
+                });
+            });
+        }
+    </script>
+</body>
+</html>

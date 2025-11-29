@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>要结束了</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            
+            box-sizing: border-box;
+        }
+        
+        body {
+            width: 100vw;
+            height: 100vh;
+            background: url('../image/bg1.jpg') no-repeat;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Microsoft YaHei', sans-serif;
+            overflow: hidden;
+        }
+
+        nav {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .box {
+            flex: 1;
+            width: 90%;
+            margin: 20px auto;
+            background: linear-gradient(135deg,
+                rgba(87, 194, 255, 0.5) 0%,
+                rgba(247, 112, 184, 0.5) 50%,
+                rgba(140, 114, 236, 0.5) 100%);
+            background-size: 200% 200%;
+            animation: shine 3s infinite linear;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 15px rgb(255, 255, 255);
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes shine {
+            0% {
+                background-position: 0% 0%;
+            }
+            50% {
+                background-position: 100% 100%;
+            }
+            100% {
+                background-position: 0% 0%;
+            }
+        }
+
+        .container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            padding: 0 5%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 上半部分文本框区域 */
+        .text-section {
+            height: 25%;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .text-container {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            box-shadow: inset 0 0 10px rgb(255, 255, 255);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .text-title {
+            color: white;
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .text-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: white;
+            font-size: 16px;
+            resize: none;
+            line-height: 1.5;
+        }
+
+        .text-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* 下半部分好友展示区域 */
+        .friends-section {
+            height: 75%;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .friends-container {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            box-shadow: inset 0 0 10px rgb(255, 255, 255);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .friends-title {
+            color: white;
+            font-size: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .friends-grid {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .friends-grid::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .friends-grid::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+        }
+        
+        .friends-grid::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 3px;
+        }
+
+        .friend-card {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .friend-card:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-5px);
+        }
+
+        .friend-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            overflow: hidden;
+            border: 2px solid white;
+        }
+
+        .friend-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .friend-name {
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .friend-status {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .container {
+                padding: 0 20px;
+            }
+            
+            .text-container, .friends-container {
+                padding: 15px;
+            }
+            
+            .friends-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .friend-avatar {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .friends-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <div class="logo">好友展示</div>
+        <ul class="nav-links">
+            <li><a href="../index.html"><i class="fas fa-home"></i> 首页</a></li>
+            <li><a href="about.html"><i class="fas fa-user"></i> 关于我</a></li>
+            <li><a href="photo.html"><i class="fas fa-camera"></i> 随手摄</a></li>
+             <li><a href="zatan.html"><i class="fas fa-blog"></i> 杂谈</a></li>
+            <li><a href="thanks.html"><i class="fas fa-envelope"></i> 联系我&&鸣谢</a></li>
+        </ul>
+    </nav>
+
+    <!-- 主内容区域 -->
+    <div class="box">
+        <div class="container">
+            <!-- 上半部分文本框 -->
+            <div class="text-section">
+                <div class="text-container">
+                    <div class="text-title">要联系我吗</div>
+                   <textarea class="text-input" placeholder="在这里记录关于好友的一些备注信息...">QQ：413761950
+                        暂时只有这一个哦（请注明来意QWQ）
+                    </textarea>
+                </div>
+            </div>
+            
+            <!-- 下半部分好友展示区 -->
+            <div class="friends-section">
+                <div class="friends-container">
+                    <div class="friends-title">感谢</div>
+                    <p1 style="color: aliceblue;"><b><i>以下是在制作网页的过程中为我提供帮助的好友，在此一并表示感谢</p1></b></i>
+                    <div class="friends-grid" id="friendsGrid">
+                        <!-- 好友卡片将通过JavaScript生成 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 好友数据 - 您可以在这里手动添加或修改好友信息
+        const friends = [
+            {
+                id: 1,
+                name: "@来者皆可得",
+                avatar: "../image/3.jpg"
+               
+            },
+            {
+                id: 2,
+                name: "@为霜",
+               avatar: "../image/2.jpg"
+            },
+            {
+                id: 3,
+                name:"@🔮",
+              
+                avatar: "../image/1.jpg"
+            },
+            {
+                id: 4,
+                name: "@free.exe",
+                avatar: "../image/9cbe17db04452a06316ea59f305d0c63.jpg"
+            },
+            
+        ];
+   
+        // /页面加载完成后执行
+        window.onload = function() {
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // 如果不是当前页面，允许跳转
+                    if (!this.classList.contains('active')) {
+                        return; // 允许默认行为 - 跳转到链接
+                    }
+                    
+                    e.preventDefault();
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 200);
+                });
+            });
+                              
+            // 渲染好友网格
+            renderFriendsGrid();
+        };
+        
+        // 渲染好友网格
+        function renderFriendsGrid() {
+            const friendsGrid = document.getElementById('friendsGrid');
+            
+            friends.forEach(friend => {
+                const friendCard = document.createElement('div');
+                friendCard.className = 'friend-card';
+                
+                friendCard.innerHTML = `
+                    <div class="friend-avatar">
+                        <img src="${friend.avatar}" alt="${friend.name}">
+                    </div>
+                    <div class="friend-name">${friend.name}</div>
+                    <div class="friend-status">${friend.status}</div>
+                `;
+                
+                friendsGrid.appendChild(friendCard);
+            });
+        }
+    </script>
+</body>
+</html>

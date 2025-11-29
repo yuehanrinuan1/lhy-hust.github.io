@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>杂谈</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            width: 100vw;
+            height: 100vh;
+            background: url('../image/bg1.jpg ') no-repeat;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Microsoft YaHei', sans-serif;
+            overflow: hidden;
+        }
+
+        nav {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .box {
+            flex: 1;
+            width: 90%;
+            margin: 20px auto;
+            background: linear-gradient(135deg,
+                rgba(87, 194, 255, 0.5) 0%,
+                rgba(247, 112, 184, 0.5) 50%,
+                rgba(140, 114, 236, 0.5) 100%);
+            background-size: 200% 200%;
+            animation: shine 3s infinite linear;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 15px rgb(255, 255, 255);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes shine {
+            0% {
+                background-position: 0% 0%;
+            }
+            50% {
+                background-position: 100% 100%;
+            }
+            100% {
+                background-position: 0% 0%;
+            }
+        }
+
+        .text-container {
+            width: 70%;
+            height: 70%;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            box-shadow: inset 0 0 15px rgb(255, 255, 255);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .text-header {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            text-align: center;
+        }
+
+        .text-title {
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .text-content {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+            color: white;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        .text-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .text-content::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+        }
+        
+        .text-content::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .text-container {
+                width: 90%;
+                height: 80%;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <div class="logo">杂谈</div>
+        <ul class="nav-links">
+            <li><a href="../index.html"><i class="fas fa-home"></i> 首页</a></li>
+            <li><a href="about.html"><i class="fas fa-user"></i> 关于我</a></li>
+            <li><a href="photo.html"><i class="fas fa-camera"></i> 随手摄</a></li>
+            <li><a href="zatan.html" class="active"><i class="fas fa-font"></i> 杂谈</a></li>
+            <li><a href="thanks.html"><i class="fas fa-envelope"></i> 联系我&&鸣谢</a></li>
+        </ul>
+    </nav>
+
+    <!-- 主内容区域 -->
+    <div class="box">
+        <!-- 中央文字容器 -->
+        <div class="text-container">
+            <div class="text-header">
+                
+                <div><h1 style="color:rgb(220, 245, 235)">一些有趣的内容</h1></div>
+            </div>
+            <div class="text-content">
+           <h2>前言（仅仅是个人的胡言乱语）</h2>
+           <p>-要说些什么呢？/突然发现做网页也非常有意思/</p>
+           <P>老子曾经说过：“道可道，非常道”，这句话的意思是什么呢？在我看来啊，显然就是真正的道，是处于一种只可意会不可言传的状态。</P>
+           <P>就像求道的帝林轩一样，不过是大爱仙尊罢了</P>
+           <h3 style="color:black">----------------------------------------------------------------2025.11.28</h3><hr><hr><hr>
+            <h2>正文（仅仅是我们的胡言乱语）</h2>
+            <p1 class="text-content">
+            我堂堂太昊御剑千里之外，不过须臾之间</p1>
+            <h3 style="color:black">此条来源于帝林轩----------------------------------2025.11.28 </h3>
+            <h2>颠倒世界的一万六千亩玫瑰凋落了，但你的长夏永不会凋落——那是连神明都夸口称赞过的夏天</h2>
+            <h1>-----11.28 by LYY</h1>
+           <h2 ;"><a href="https://b23.tv/hIVIr5V" style="color: aliceblue;" target="_blank">令帝林轩略感惊艳的小说词句</a></h2> 
+           </div> 
+           
+        
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // 如果不是当前页面，允许跳转
+                    if (!this.classList.contains('active')) {
+                        return; // 允许默认行为 - 跳转到链接
+                    }
+                    
+                    e.preventDefault();
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 200);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
